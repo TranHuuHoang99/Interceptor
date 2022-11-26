@@ -1,0 +1,5 @@
+export enum PREFAB_TYPE {
+    AIRCRAFT_SPAWNER = 0,
+    AIRCRAFT,
+    CLOUD
+}

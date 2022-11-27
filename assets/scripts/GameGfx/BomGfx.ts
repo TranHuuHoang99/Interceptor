@@ -1,28 +1,18 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+import { PREFAB_TYPE } from "../GameEvents/GameEvents";
+import GameResource from "../GameManager/GameResource";
 
-const {ccclass, property} = cc._decorator;
 
-@ccclass
-export default class NewClass extends cc.Component {
+export default class BomGfx {
+    private _bomDropper: cc.Node = undefined;
+    private _nuclearBom: cc.Node = undefined;
 
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    start () {
-
+    constructor(bomDropper: cc.Node) {
+        this._bomDropper = bomDropper;
+        const spawner = cc.instantiate(GameResource.prefabs.get(PREFAB_TYPE.NUCLEAR_BOM));
+        this._bomDropper.addChild(spawner);
     }
 
-    // update (dt) {}
+    public onDroppingBom() {
+        //TODO
+    }
 }

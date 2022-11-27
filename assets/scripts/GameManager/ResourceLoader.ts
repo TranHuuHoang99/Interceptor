@@ -7,7 +7,8 @@ const {ccclass, property} = cc._decorator;
 export default class ResourceLoader {
     private static readonly _path_loader: Array<string> = [
         "prefabs/Spawner/PlaneSpawner",
-        "prefabs/planes/su57"
+        "prefabs/planes/su57",
+        "prefabs/bom/nuclearbom"
     ];
 
     private static _resource_loader: ResourceLoader = undefined;

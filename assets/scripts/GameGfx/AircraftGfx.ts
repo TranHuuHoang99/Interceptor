@@ -1,6 +1,7 @@
 import { PREFAB_TYPE } from "../GameEvents/GameEvents";
 import { GameParam } from "../GameManager/GameParam";
 import GameResource from "../GameManager/GameResource";
+import BomGfx from "./BomGfx";
 
 
 export default class AircraftGfx {
@@ -34,6 +35,7 @@ export default class AircraftGfx {
                 aircraft = cc.instantiate(GameResource.prefabs.get(PREFAB_TYPE.AIRCRAFT));
                 this._aircraftSpawner.addChild(aircraft);
                 this._aircraft_movement(aircraft, posX);
+                new BomGfx(aircraft);
                 resolve(aircraft);
             }, GameParam.aircraft_init_timing);
         });

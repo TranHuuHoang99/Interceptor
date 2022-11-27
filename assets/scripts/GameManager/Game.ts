@@ -11,6 +11,10 @@ export default class Game extends cc.Component {
         this._init();
     }
 
+    start() {
+        
+    }
+
     private _onLoadPref(): Promise<void> {
         return ResourceLoader.inst().fetchPrefab();
     }

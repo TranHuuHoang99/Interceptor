@@ -1,5 +1,5 @@
-import { PREFAB_TYPE } from "../GameEvents/GameEvents";
-import GameResource from "./GameResource";
+import AircraftGfx from "../GameGfx/AircraftGfx";
+import { GameParam } from "./GameParam";
 import ResourceLoader from "./ResourceLoader";
 
 const {ccclass, property} = cc._decorator;
@@ -17,9 +17,13 @@ export default class Game extends cc.Component {
 
     private async _init() {
         await this._onLoadPref();
-        const spawner = cc.instantiate(GameResource.prefabs.get(PREFAB_TYPE.AIRCRAFT_SPAWNER));
-        this.node.addChild(spawner);
-        const aircraft = cc.instantiate(GameResource.prefabs.get(PREFAB_TYPE.AIRCRAFT));
-        spawner.addChild(aircraft);
+        //TODO initialize aircraft spawner, aircraft
+        new AircraftGfx(this.node); // inside this is a Promise object
+    }
+
+    update(dt?: number) {
+        if(GameParam.debug_mode) {
+            console.log(cc.view.getFrameSize().width, cc.view.getFrameSize().height);
+        }
     }
 }
